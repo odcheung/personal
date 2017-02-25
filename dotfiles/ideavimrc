@@ -7,6 +7,7 @@ set smartcase
 set incsearch
 set hlsearch
 set scrolloff=5
+set clipboard+=unnamedplus
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>

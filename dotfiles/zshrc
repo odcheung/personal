@@ -30,7 +30,9 @@ alias zreload="exec zsh"
 # can also try deleting node_modules
 alias jsclean="npm cache clean && rm -r ~/repos/airbnb/tmp/cache && sudo service unicorn restart && rm -r /tmp/phoenix-cache && sudo service phoenix restart"
 
+alias rolod="cd ~/repos/treehouse/projects/rolodex"
 alias rolo="ssh i-08f665867d21b9ed6.inst.aws.airbnb.com"
+alias rolo-test="ssh i-022480fa1e4470036.inst.aws.airbnb.com"
 alias sup="git fetch && git rebase origin/master && vagrant ssh -c \"'cd ~/airbnb && /usr/local/bin/owen-post-merge && sudo service unicorn restart && sudo service nginx restart'\""
 alias bounce="vagrant ssh -c 'sudo service monorail restart && sudo service nginx restart'"
 alias newbundle="vagrant ssh -c 'sudo service monorail-mystique restart && sudo service monorail-webpack restart'"
@@ -57,6 +59,7 @@ alias gold="ssh owen_lin@gw1.gold.musta.ch"
 alias tmuxd="/bin/sh /Users/owen_lin/personal/tmux/default.sh"
 alias tmuxv="/bin/sh /Users/owen_lin/personal/tmux/vagrant.sh"
 alias holi="ssh i-00428d4f16ce1b7f4.inst.aws.airbnb.com"
+alias rosi="pushd ~/repos/treehouse && ./gradlew :projects:rolodex:clean && ./gradlew :projects:rolodex:shadowjar && pushd projects/rolodex && ./sideload.sh rolodex-test.aws.airbnb.com || popd || popd"
 
 export JAVA7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 export JAVA8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home

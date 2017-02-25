@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: stub trebuchet
+# key: stub_treb
+# --
+stub_trebuchet('${1:name}')
