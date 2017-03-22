@@ -9,8 +9,12 @@ fi
 
 tmux new-session -s $SESSION_NAME -d
 
+# window: airlab sync
+tmux rename-window airlab-sync
+tmux send-keys -t $SESSION_NAME 'cd ~/repos/airbnb && airlab sync' C-m
+
 # window: monorail
-tmux rename-window monorail
+tmux new-window -n monorail
 tmux send-keys -t $SESSION_NAME 'cd ~/repos/airbnb' C-m
 
 # window: treehouse
