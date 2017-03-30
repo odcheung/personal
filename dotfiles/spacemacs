@@ -435,8 +435,12 @@ you should place your code here."
   (add-hook 'fundamental-mode-hook (lambda () (modify-syntax-entry ?_ "w"))) ;; for something like helm-swoop-edit
   (add-hook 'org-mode-hook (lambda () (modify-syntax-entry ?_ "w")))
 
+  ;; ruby-mode hooks
   ;; Fix for evil-jump-to-tag on something like Foo::Bar in ruby
-  (add-hook 'ruby-mode-hook (lambda () (modify-syntax-entry ?: ".")))
+  ;; Stop inserting coding: utf-8 comments at the top of files
+  (add-hook 'ruby-mode-hook (lambda ()
+                              (modify-syntax-entry ?: ".")
+                              (setq ruby-insert-encoding-magic-comment nil)))
 
   ;; Word wrap for org mode
   (add-hook 'org-mode-hook #'turn-on-visual-line-mode)
