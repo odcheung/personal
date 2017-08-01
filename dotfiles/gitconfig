@@ -20,12 +20,15 @@
 	editor = vim
 	excludesfile = ~/.gitignore_global
 	precomposeunicode = true
+	sparseCheckout = true
 [push]
 	default = current
 [rerere]
-	enabled = 1
+	enabled = true
 [user]
   name = Owen Lin
   email = owen.lin@airbnb.com
 [web]
   browser = open
+[remote "origin"]
+	prune = true

@@ -30,22 +30,25 @@ alias zreload="exec zsh"
 # can also try deleting node_modules
 alias jsclean="npm cache clean && rm -r ~/repos/airbnb/tmp/cache && sudo service unicorn restart && rm -r /tmp/phoenix-cache && sudo service phoenix restart"
 
+alias gbclean="git branch --merged | grep -v master | xargs git branch -d"
+alias gradlew="~/repos/treehouse/gradlew"
 alias rolod="cd ~/repos/treehouse/projects/rolodex"
-alias rolo="ssh i-08f665867d21b9ed6.inst.aws.airbnb.com"
-alias rolo-test="ssh i-022480fa1e4470036.inst.aws.airbnb.com"
+alias rolo="ssh i-00b3619fb7febbf3d.inst.aws.airbnb.com"
+alias rolo-test="ssh i-01ce2644e2eb1e674.inst.aws.airbnb.com"
 alias sup="git fetch && git rebase origin/master && vagrant ssh -c \"'cd ~/airbnb && /usr/local/bin/owen-post-merge && sudo service unicorn restart && sudo service nginx restart'\""
-alias bounce="airlab ssh -c 'sudo service monorail restart && sudo service nginx restart'"
-alias newbundle="airlab ssh -c 'sudo service monorail-mystique restart && sudo service monorail-webpack restart'"
-alias mystique="airlab ssh -c 'sudo service monorail-mystique restart'"
+alias bounce="airlab ssh 'sudo service monorail restart && sudo service nginx restart'"
+alias newbundle="airlab ssh 'sudo service monorail-hypernova restart && sudo service monorail-webpack restart'"
+alias hypernova="airlab ssh 'sudo service monorail-hypernova restart'"
 alias freb="git fetch && git rebase origin/master"
 alias frebb="git fetch && git rebase origin/master && monupdate"
-alias monupdate="vagrant ssh -c \"'cd ~/airbnb && bundle install && npm install && sudo service monorail restart && sudo service nginx restart && sudo service monorail-mystique restart && sudo service monorail-webpack restart'\""
+alias monupdate="vagrant ssh -c \"'cd ~/airbnb && bundle install && npm install && sudo service monorail restart && sudo service nginx restart && sudo service monorail-hypernova restart && sudo service monorail-webpack restart'\""
 alias faster="vagrant ssh -c \"'sudo sv down bouncer-worker-0 bouncer autopricing; sudo service pricing stop; sudo service pinnacle stop; sudo service discover stop; sudo service search stop'\""
 alias slower="vagrant ssh -c \"'sudo sv down bouncer-worker-0 bouncer autopricing; sudo service pricing start; sudo service pinnacle start; sudo service discover start; sudo service search start'\""
 alias a="airlab"
 alias less="less -R"
 alias rekey='goldkey'
 alias prune='git remote prune origin'
+alias prune-merged="git branch --merged master | grep -v -E '^(\\* |  master$)' | xargs -n 1 git branch -d"
 alias undo='git reset --soft HEAD~ && git reset HEAD'
 alias lerf="vagrant ssh -c \"'cd ~/repos/data/airflow/metrics_repo/deploy && ./dev_load_redis'\""
 alias bluetooth="sudo kextunload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport && sudo kextload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport"
@@ -55,17 +58,27 @@ alias ggat="rm /tmp/gtags_source_files && ag -l -g \"\" --ruby > /tmp/gtags_sour
 # alias tmuxa="tmux attach -d"
 alias rc1="ssh owen_lin@rc1.musta.ch"
 alias hive="ssh owen_lin@gw1.silver.musta.ch"
+alias hive3="ssh owen_lin@gw3.silver.musta.ch"
 alias gold="ssh owen_lin@gw1.gold.musta.ch"
+alias spark="ssh owen_lin@gw2.spark.musta.ch"
 alias tmuxd="/bin/sh /Users/owen_lin/personal/tmux/default.sh"
 alias tmuxv="/bin/sh /Users/owen_lin/personal/tmux/vagrant.sh"
-alias holi="ssh i-00428d4f16ce1b7f4.inst.aws.airbnb.com"
 alias rosi="pushd ~/repos/treehouse && ./gradlew :projects:rolodex:clean && ./gradlew :projects:rolodex:shadowjar && pushd projects/rolodex && ./sideload.sh rolodex-test.aws.airbnb.com || popd || popd"
+alias rolo-build="gradlew :projects:rolodex:rolodex-service:shadowjar"
+alias spark-build="pushd ~/repos/treehouse && ./gradlew :projects:rolodex-data-pipeline:email-contacts-job:clean && ./gradlew :projects:rolodex-data-pipeline:email-contacts-job:shadowjar && pushd projects/rolodex-data-pipeline/email-contacts-job && ./scripts/sideload.sh gw2.spark.musta.ch || popd || popd"
+alias omnes-build="pushd ~/repos/treehouse && ./gradlew :projects:rolodex-data-pipeline:omnes-offset-job:clean && ./gradlew :projects:rolodex-data-pipeline:omnes-offset-job:shadowjar && pushd projects/rolodex-data-pipeline/omnes-offset-job && ./scripts/sideload.sh gw2.spark.musta.ch || popd || popd"
+alias omnes-b="pushd ~/repos/treehouse && ./gradlew :projects:rolodex-data-pipeline:omnes-offset-job:clean && ./gradlew :projects:rolodex-data-pipeline:omnes-offset-job:shadowjar || popd"
 
 export JAVA7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 export JAVA8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
 export JAVA_HOME=$JAVA8_HOME
 
 export PATH=~/bin:$JAVA_HOME/bin:/usr/local/share/python:$PATH
+
+# afdev
+export DATA_DIR="/Users/owen_lin/airlab/repos/data"
+export AFDEV_HOST="i-d6159ec0.inst.aws.airbnb.com"
+export AFDEV_PORT=59152
 
 # Push a gem to the remote gemserver
 function push-gem {
