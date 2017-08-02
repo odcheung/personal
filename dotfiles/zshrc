@@ -65,7 +65,7 @@ alias tmuxd="/bin/sh /Users/owen_lin/personal/tmux/default.sh"
 alias tmuxv="/bin/sh /Users/owen_lin/personal/tmux/vagrant.sh"
 alias rosi="pushd ~/repos/treehouse && ./gradlew :projects:rolodex:clean && ./gradlew :projects:rolodex:shadowjar && pushd projects/rolodex && ./sideload.sh rolodex-test.aws.airbnb.com || popd || popd"
 alias rolo-build="gradlew :projects:rolodex:rolodex-service:shadowjar"
-alias spark-build="pushd ~/repos/treehouse && ./gradlew :projects:rolodex-data-pipeline:email-contacts-job:clean && ./gradlew :projects:rolodex-data-pipeline:email-contacts-job:shadowjar && pushd projects/rolodex-data-pipeline/email-contacts-job && ./scripts/sideload.sh gw2.spark.musta.ch || popd || popd"
+alias spark-build="pushd ~/repos/treehouse && ./gradlew :projects:rolodex-data-pipeline:export-contacts-job:clean && ./gradlew :projects:rolodex-data-pipeline:export-contacts-job:shadowjar && pushd projects/rolodex-data-pipeline/export-contacts-job && ./scripts/sideload.sh gw2.spark.musta.ch || popd || popd"
 alias omnes-build="pushd ~/repos/treehouse && ./gradlew :projects:rolodex-data-pipeline:omnes-offset-job:clean && ./gradlew :projects:rolodex-data-pipeline:omnes-offset-job:shadowjar && pushd projects/rolodex-data-pipeline/omnes-offset-job && ./scripts/sideload.sh gw2.spark.musta.ch || popd || popd"
 alias omnes-b="pushd ~/repos/treehouse && ./gradlew :projects:rolodex-data-pipeline:omnes-offset-job:clean && ./gradlew :projects:rolodex-data-pipeline:omnes-offset-job:shadowjar || popd"
 
