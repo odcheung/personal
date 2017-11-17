@@ -37,6 +37,7 @@ alias rolo="ssh i-00b3619fb7febbf3d.inst.aws.airbnb.com"
 alias rolo-test="ssh i-01ce2644e2eb1e674.inst.aws.airbnb.com"
 alias sup="git fetch && git rebase origin/master && vagrant ssh -c \"'cd ~/airbnb && /usr/local/bin/owen-post-merge && sudo service unicorn restart && sudo service nginx restart'\""
 alias bounce="airlab ssh 'sudo service monorail restart && sudo service nginx restart'"
+alias monobounce="airlab ssh 'sudo sv restart /etc/service/monorail*'"
 alias newbundle="airlab ssh 'sudo service monorail-hypernova restart && sudo service monorail-webpack restart'"
 alias hypernova="airlab ssh 'sudo service monorail-hypernova restart'"
 alias freb="git fetch && git rebase origin/master"
@@ -79,6 +80,21 @@ export PATH=~/bin:$JAVA_HOME/bin:/usr/local/share/python:$PATH
 export DATA_DIR="/Users/owen_lin/airlab/repos/data"
 export AFDEV_HOST="i-d6159ec0.inst.aws.airbnb.com"
 export AFDEV_PORT=59152
+
+# ptunnel (hive postgres atlas)
+function ptunnel {
+  ssh -t owen_lin@gw${1}.silver.musta.ch -L 5432:vpc-atlas-master.cqmqbyzxdwlk.us-east-1.rds.amazonaws.com:5432
+}
+
+# npm run jest in airlab
+function npmt {
+  airlab ssh "cd ~/repos/airbnb && npm run cover-quick -- ${1}"
+}
+
+# npm run jest in airlab and open coverage file
+function npmto {
+  airlab ssh "cd ~/repos/airbnb && npm run cover-quick -- ${1}" && open coverage/index.html
+}
 
 # Push a gem to the remote gemserver
 function push-gem {
@@ -166,3 +182,15 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_CTRL_T_COMMAND='ag -l -g ""'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Node 6
+export PATH="/usr/local/opt/node@6/bin:$PATH"
+
+# AIRLAB-DO-NOT-MODIFY section:ShellWrapper {{{
+# Airlab will only make edits inside these delimiters.
+
+# Source Airlab's shell integration, if it exists.
+if [ -e ~/.airlab/shellhelper.sh ]; then
+  source ~/.airlab/shellhelper.sh
+fi
+# AIRLAB-DO-NOT-MODIFY section:ShellWrapper }}}
