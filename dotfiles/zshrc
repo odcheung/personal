@@ -11,7 +11,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# Load custom Owen prompt
 autoload -Uz promptinit
+fpath=(${HOME}/.zsh_prompts $fpath)
 promptinit
 prompt owen
 
@@ -114,7 +117,7 @@ function load-erf {
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM
 
 # This is also duplicated in .zshenv to get spacemacs to work with scss-lint
-eval "$(rbenv init -)" # This loads rbenv
+# eval "$(rbenv init -)" # This loads rbenv
 
 export EDITOR=vim
 export VISUAL=vim
@@ -182,15 +185,3 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_CTRL_T_COMMAND='ag -l -g ""'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Node 6
-export PATH="/usr/local/opt/node@6/bin:$PATH"
-
-# AIRLAB-DO-NOT-MODIFY section:ShellWrapper {{{
-# Airlab will only make edits inside these delimiters.
-
-# Source Airlab's shell integration, if it exists.
-if [ -e ~/.airlab/shellhelper.sh ]; then
-  source ~/.airlab/shellhelper.sh
-fi
-# AIRLAB-DO-NOT-MODIFY section:ShellWrapper }}}
